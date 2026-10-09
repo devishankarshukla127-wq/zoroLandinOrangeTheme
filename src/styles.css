@@ -35,32 +35,37 @@
   --radius-xl: 28px;
 }
 :root {
-  --background: oklch(0.977 0.007 80);
-  --foreground: oklch(0.218 0 0);
-  --display-ink: oklch(0.18 0.007 55);
-  --card: oklch(1 0 0);
-  --primary: oklch(0.653 0.199 35.6);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.946 0.008 85);
-  --muted: oklch(0.946 0.008 85);
-  --muted-foreground: oklch(0.456 0.011 77);
-  --subtle: oklch(0.614 0.015 78);
-  --cream: oklch(0.953 0.012 87);
-  --powder: oklch(0.937 0.013 270);
-  --sage: oklch(0.923 0.025 129);
-  --blush: oklch(0.946 0.015 1);
-  --trust: oklch(0.433 0.085 154);
-  --trust-light: oklch(0.943 0.022 148);
-  --amber: oklch(0.754 0.135 80);
-  --pink: oklch(0.73 0.13 359);
-  --border: oklch(0.913 0.015 80);
-  --hairline: oklch(0.22 0 0 / 6%);
-  --shadow-paper: 0 8px 30px oklch(0.25 0.02 65 / 6%);
-  --shadow-lift: 0 12px 36px oklch(0.25 0.02 65 / 10%);
+  /* Four-colour palette: white ground, soft sage surfaces, warm grey ink, orange as the only accent. */
+  --palette-white: #FFFFFF;
+  --palette-sage: #CCDDD8;
+  --palette-ink: #5C5852;
+  --palette-orange: #FF5924;
+  --background: var(--palette-white);
+  --foreground: var(--palette-ink);
+  --display-ink: var(--palette-ink);
+  --card: var(--palette-white);
+  --primary: var(--palette-orange);
+  --primary-foreground: var(--palette-white);
+  --secondary: color-mix(in srgb, var(--palette-sage) 40%, white);
+  --muted: color-mix(in srgb, var(--palette-sage) 40%, white);
+  --muted-foreground: var(--palette-ink);
+  --subtle: color-mix(in srgb, var(--palette-ink) 80%, white);
+  --cream: color-mix(in srgb, var(--palette-sage) 40%, white);
+  --powder: color-mix(in srgb, var(--palette-sage) 60%, white);
+  --sage: var(--palette-sage);
+  --blush: color-mix(in srgb, var(--palette-sage) 55%, white);
+  --trust: var(--palette-ink);
+  --trust-light: var(--palette-sage);
+  --amber: var(--palette-ink);
+  --pink: color-mix(in srgb, var(--palette-sage) 70%, var(--palette-ink));
+  --border: var(--palette-sage);
+  --hairline: color-mix(in srgb, var(--palette-ink) 14%, transparent);
+  --shadow-paper: 0 8px 30px color-mix(in srgb, var(--palette-ink) 8%, transparent);
+  --shadow-lift: 0 12px 36px color-mix(in srgb, var(--palette-ink) 14%, transparent);
   --glass-fill: linear-gradient(180deg, color-mix(in oklch, var(--primary) 26%, oklch(1 0 0 / 55%)) 0%, oklch(1 0 0 / 62%) 100%);
   --glass-border: oklch(1 0 0 / 70%);
   --glass-highlight: inset 0 1px 0 oklch(1 0 0 / 80%), inset 0 -1px 0 oklch(1 0 0 / 30%);
-  --glass-shadow: 0 8px 32px color-mix(in oklch, var(--primary) 18%, transparent), 0 2px 8px oklch(0.25 0.02 65 / 8%);
+  --glass-shadow: 0 8px 32px color-mix(in oklch, var(--primary) 18%, transparent), 0 2px 8px color-mix(in srgb, var(--palette-ink) 10%, transparent);
   --glass-blur: blur(5px) saturate(1.6);
   --radius: 28px;
   --radius-inner: 18px;
@@ -127,7 +132,7 @@
 .search-wrap input::placeholder { color: var(--subtle); }
 .directory-tabs { display: flex; gap: 23px; margin: 16px 0 13px; }
 .directory-tabs .editorial-button { padding: 0 1px 5px; height: 30px; border-radius: 0; font-size: 12px; }
-.directory-tabs .tab-selected { color: var(--foreground); border-bottom: 1px solid var(--foreground); }
+.directory-tabs .tab-selected { color: var(--foreground); border-bottom: 2px solid var(--primary); }
 .chips { display: flex; flex-wrap: wrap; gap: 7px; }
 .chips .editorial-button { height: 32px; padding: 0 14px; font-size: 11px; }
 .directory-result { font-size: 12px; color: var(--muted-foreground); margin-top: 16px; }
@@ -196,7 +201,7 @@
 .video-meta { margin-top: 14px; font-size: 8px; }
 .trade-photo { width: 100%; height: 130px; object-fit: cover; border-radius: 12px; margin-bottom: 14px; }
 .sidebar { display: flex; flex-direction: column; gap: 20px; }
-.side-section { padding: 23px 24px; border-radius: var(--radius); background: var(--card); }
+.side-section { padding: 23px 24px; border-radius: var(--radius); background: var(--secondary); }
 .trust-section { background: var(--sage); padding-bottom: 23px; }
 .side-title { font-size: 25px; line-height: 1.1; margin-bottom: 20px; }
 .trust-steps { display: flex; justify-content: space-between; margin: 21px 0 16px; position: relative; gap: 9px; }
