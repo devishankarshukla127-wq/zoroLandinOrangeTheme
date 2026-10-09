@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Instrument Serif', Georgia, serif;
   --font-sans: 'Inter', sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -57,6 +57,11 @@
   --hairline: oklch(0.22 0 0 / 6%);
   --shadow-paper: 0 8px 30px oklch(0.25 0.02 65 / 6%);
   --shadow-lift: 0 12px 36px oklch(0.25 0.02 65 / 10%);
+  --glass-fill: linear-gradient(180deg, color-mix(in oklch, var(--primary) 26%, oklch(1 0 0 / 55%)) 0%, oklch(1 0 0 / 62%) 100%);
+  --glass-border: oklch(1 0 0 / 70%);
+  --glass-highlight: inset 0 1px 0 oklch(1 0 0 / 80%), inset 0 -1px 0 oklch(1 0 0 / 30%);
+  --glass-shadow: 0 8px 32px color-mix(in oklch, var(--primary) 18%, transparent), 0 2px 8px oklch(0.25 0.02 65 / 8%);
+  --glass-blur: blur(5px) saturate(1.6);
   --radius: 28px;
   --radius-inner: 18px;
   --radius-pill: 999px;
@@ -94,7 +99,7 @@
 .app-layout { max-width: 1240px; margin: 44px auto 60px; display: grid; grid-template-columns: minmax(0, 1fr) 272px; gap: 26px; align-items: start; }
 .main-column { min-width: 0; }
 .eyebrow { font-size: 10px; font-weight: 500; letter-spacing: .1em; line-height: 1.5; text-transform: uppercase; color: var(--muted-foreground); }
-.display { font-family: var(--font-display); color: var(--display-ink); font-weight: 500; letter-spacing: 0; }
+.display { font-family: var(--font-display); color: var(--display-ink); font-weight: 400; letter-spacing: -0.02em; }
 .hero { position: relative; background: var(--cream); border-radius: var(--radius); padding: 35px 38px 25px; overflow: hidden; }
 .hero-top { display: flex; align-items: center; justify-content: space-between; }
 .hero-top > svg { color: var(--subtle); }
@@ -320,3 +325,11 @@ textarea.dialog-field { min-height: 125px; resize: vertical; }
  .navigation-page .app-layout { display: flex; flex-direction: column; margin: 25px 0 60px; gap: 25px; }
  .navigation-page .main-column, .navigation-page .sidebar { width: 100%; }
 }
+
+/* Frosted-glass top bar: peach-to-white translucent fill with blur, bright rim and soft coral glow. */
+.site-nav { background: var(--glass-fill); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); box-shadow: var(--glass-highlight), var(--glass-shadow); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .site-nav { background: color-mix(in oklch, var(--card) 92%, var(--primary)); } }
+
+.hero h1 { font-size: 76px; line-height: 1; letter-spacing: -0.03em; }
+.hero h1 em, .section-title em { font-style: italic; }
+.wordmark span, .section-title, .side-title, .dialog-heading, .video-title, .article-preview h3, .podcast-preview h3, .stat-row strong { font-weight: 400; letter-spacing: -0.02em; }
